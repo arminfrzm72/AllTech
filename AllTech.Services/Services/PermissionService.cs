@@ -53,6 +53,7 @@ namespace AllTech.Services.Services
             _db.SaveChanges();
         }
 
+        //Edit User Roles
         public void EditUserRoles(int userId, List<Roles> rolesId)
         {
             //Delete All User Roles

@@ -48,7 +48,7 @@
                     <div asp-validation-summary="All"></div>
                     <input type="submit" value="ویرایش اطلاعات" class="btn btn-warning" />
                 </div>
-                <!-- /.panel-body -->
+                <!-- /.panel-body -->               
             </div>
         </div>
         <div class="col-md-4">
@@ -73,6 +73,7 @@
                     نقش‌های کاربر
                 </div>
                 <!-- /.panel-heading -->
+                @*Edit user roles*@
                 <div class="panel-body">
                     <div class="form-group">
                         @foreach (var role in roleList)

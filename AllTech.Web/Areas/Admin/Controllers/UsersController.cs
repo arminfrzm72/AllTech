@@ -55,6 +55,7 @@ namespace AllTech.Web.Areas.Admin.Controllers
             return View(_userService.GetUserForEditByAdmin(id));
         }
 
+        //Edit user
         [Route("Admin/EditUser/{id}")]
         [HttpPost]
         public IActionResult EditUser(EditUserViewModel editUser,List<Roles> SelectedRoles)
