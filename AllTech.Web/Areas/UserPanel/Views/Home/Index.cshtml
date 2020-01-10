@@ -1,0 +1,16 @@
+﻿@model UserInformationViewModel
+@{
+    ViewData["Title"] = "پنل کاربری |" + Model.UserName;
+}
+
+    <section class="last-news-section border-radius ">
+        <header><i class="fa fa-info fa-2x"></i><h3>اطلاعات کاربر </h3> </header>
+        <ul>
+            <li><i class="fa fa-user"></i>&nbsp; نام :&nbsp;@Model.FirstName</li>
+            <li><i class="fa fa-user"></i>&nbsp; نام خانوادگی :&nbsp;@Model.LastName</li>
+            <li><i class="fa fa-user"></i>&nbsp; نام کاربری :&nbsp;@Model.UserName</li>
+            <li><i class="fa fa-envelope"></i>&nbsp; ایمیل :&nbsp;@Model.Email</li>
+            <li><i class="fa fa-money"></i>&nbsp; مانده حساب :&nbsp;@Model.WalletBalance ریال</li>
+        </ul>
+    </section>
+

@@ -1,0 +1,15 @@
+﻿@inject INewsGroupRepository _newGroupRepository
+
+<ul>
+    <li><a href="/"> صفحه اصلی </a></li>
+    <li>
+        <span>گروه های خبری</span>
+        <ul>
+            @foreach (var item in _newGroupRepository.GetListGroups())
+            {
+                <li><a href="/Group/@item.GroupID/@item.GroupTitle">@item.GroupTitle</a></li>
+            }
+
+        </ul>
+    </li>
+</ul>

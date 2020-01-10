@@ -1,0 +1,23 @@
+﻿
+@if (User.Identity.IsAuthenticated)
+{
+    <section class="category-section border-radius">
+        <header><i class="fa fa-user"></i> <h3> @User.Identity.Name خوش آمدید </h3></header>       
+        <ul>
+            <li><a href="/UserPanel">پنل کاربری</a></li>
+            <li><a href="/admin/NewsGroups">مدیریت گروه‌های خبری</a></li>
+            <li><a href="/admin/News">مدیریت خبرها</a></li>
+            <li><a href="/Logout">خروج</a></li>
+        </ul>
+    </section>
+}
+else
+{
+    <section class="category-section border-radius">
+        <header><i class="fa fa-user"></i> <h3> کاربر میهمان خوش آمدید </h3></header>
+        <ul>
+            <li><a asp-action="Login" asp-controller="Account">ورود</a></li>
+            <li><a asp-action="Register" asp-controller="Account">عضویت</a></li>
+        </ul>
+    </section>
+}

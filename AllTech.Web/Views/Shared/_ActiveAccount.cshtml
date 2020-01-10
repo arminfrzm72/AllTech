@@ -1,0 +1,13 @@
+﻿@model User
+
+<div style="direction:rtl;padding:20px">
+    <p>
+        @Model.UserName عزیز!
+    </p>
+    <p>
+        با تشکر از ثبت نام شما،لطفا جهت فعالسازی وارد لینک زیر شوید!!!
+    </p>
+    <p>
+        <a href="https://localhost:44384/Account/ActiveAccount/@Model.ActiveCode" class="btn btn-primary" >فعالسازی حساب کاربری</a>
+    </p>
+</div>

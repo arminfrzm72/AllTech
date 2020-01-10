@@ -1,0 +1,23 @@
+﻿@model IEnumerable<News>
+@{
+    ViewData["Title"] = "جستجو";
+}
+
+    <section class="last-news-section border-radius margin-top-60">
+        <header><i class="fa fa-file fa-2x"style="color:#FF393A"></i>  <h3>نتیجه جستجو</h3> </header>
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>
+                    <img class="border-radius thumbnail" src="~/NewsImages/@item.ImageName">
+                    <h2> <a href="~/News/@item.NewsID"> @item.NewsTitle </a></h2>
+                    <p>
+                        @item.ShortDescription
+                    </p>
+                    <span class="date-publish"><i class="fa fa-calendar"></i> انتشار : @item.CreateDate.ToShamsi() </span>
+                    <a href="~/News/@item.NewsID" class="more-link"><i class="fa fa-plus fa-2x"></i></a>
+                </li>
+            }
+
+        </ul>
+    </section>

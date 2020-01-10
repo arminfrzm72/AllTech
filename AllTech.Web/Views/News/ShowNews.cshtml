@@ -1,0 +1,45 @@
+﻿@model News
+@{
+    ViewData["Title"] = Model.NewsTitle;
+}
+
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">خانه </a></li>
+        <li class="breadcrumb-item"><a href="#">اخبار </a></li>
+        <li class="breadcrumb-item"><a href="#">دسته بندی  </a></li>
+        <li class="breadcrumb-item active">@Model.NewsTitle </li>
+    </ul>
+    <section class="single-news border-radius">
+        <header><h2> @Model.NewsTitle </h2> <span> <i class="fa fa-calendar"></i>  انتشار : @Model.CreateDate.ToShamsi() </span></header>
+        <article>
+            <p>
+                @Model.ShortDescription
+            </p>
+            
+            @if (Model.ImageName!=null)
+            {
+                <div>
+                    <img src="~/NewsImages/@Model.ImageName" alt="@Model.NewsTitle" class="thumbnail" style="max-width:100%" />
+                </div>
+            }
+            <p>
+                @Model.MainText
+            </p>
+        </article>
+    </section>
+    <br />
+    <div class="single-news border-radius">
+        <br />
+        &nbsp;&nbsp; منبع خبر: &nbsp;
+        <a href="http://@Model.Source">@Model.Source</a>
+        <br />
+        <br />
+    </div>
+    <div class="keywords border-radius">
+        &nbsp; کلمات کلیدی: &nbsp;
+        @foreach (var item in Model.Tags.Split('-'))
+        {
+            <a href="~/Search?q=@item"> @item </a>
+        }
+
+    </div>

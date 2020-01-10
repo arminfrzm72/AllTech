@@ -1,0 +1,48 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "ثبت نام";
+}
+
+
+    <section class="last-news-section border-radius ">
+        <header><i class="fa fa-user-plus fa-2x"></i>  <h3>ثبت نام </h3> </header>
+        <br />
+        <div class="row">
+            <div class="col-md-6 col-sm-11 col-xs-11">
+                <form asp-action="Register" method="post" style="margin-right:10px;">
+
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="control-label"></label>
+                        <input asp-for="FirstName" type="text" class="form-control" placeholder="نام" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName" class="control-label"></label>
+                        <input asp-for="LastName" type="text" class="form-control" placeholder="نام خانوادگی" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UserName" class="control-label"></label>
+                        <input asp-for="UserName" type="text" class="form-control" placeholder="نام کاربری" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" type="text" class="form-control" placeholder="ایمیل" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" type="password" class="form-control" placeholder="کلمه عبور" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RePassword" class="control-label"></label>
+                        <input asp-for="RePassword" type="password" class="form-control" placeholder="تکرار کلمه عبور" />
+                    </div>
+                    <div>
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="ثبت نام" class="btn btn-success" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+

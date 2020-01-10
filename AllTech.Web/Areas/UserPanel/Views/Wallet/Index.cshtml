@@ -1,0 +1,65 @@
+﻿@model ChargeWalletViewModel
+@{
+    ViewData["Title"] = "کیف پول";
+}
+
+<section class="last-news-section border-radius ">
+    <header><i class="fa fa-money fa-2x"></i>  <h3>مدیریت حساب </h3> </header>
+    <div class="row">
+        <div class="col-md-12" style="margin-right:30px;">
+            <form asp-action="Index" method="post" class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Amount" class="control-label"></label>
+                    <input asp-for="Amount" type="number" class="form-control" placeholder="مبلغ به ریال" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="شارژ حساب" class="btn btn-success" />
+                </div>
+                <div class="text-danger" asp-validation-summary="All"></div>
+            </form>
+        </div>
+        <div class="col-md-12">
+            <hr />
+            <br />
+        </div>
+
+        <div class="col-md-10" style="margin-right:30px;">
+            @{
+                List<WalletViewModel> list = ViewBag.WalletList;
+            }
+            <table class="table">
+                <tr>
+                    <th>مبلغ</th>
+                    <th>تاریخ</th>
+                    <th>نوع تراکنش</th>
+                    <th>شرح</th>
+                </tr>
+
+                @foreach (var item in list)
+                {
+            <tr>
+                <td>@item.Amount.ToString("#,0 ریال")</td>
+                <td>@item.TransactionDate.ToShamsi()</td>
+                <td>
+                    @if (item.Type == 1)
+                    {
+                        <p class="text-success">
+                            واریز به حساب
+                        </p>
+                    }
+                    else
+                    {
+                        <p class="text-danger">
+                            برداشت از حساب
+                        </p>
+                    }
+                </td>
+                <td>@item.Description</td>
+            </tr>
+                        }
+                    
+                </table>
+        </div>
+    </div>
+</section>
+

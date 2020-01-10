@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewData["Title"] = "نتیجه پرداخت";
+}
+
+<section class="last-news-section border-radius ">
+    <header><i class="fa fa-money fa-2x"></i>  <h3>نتیجه پرداخت </h3> </header>
+    <div class="row">
+        @if (ViewBag.IsSuccess == true)
+        {
+            <div class="alert alert-success col-md-11" style="margin-right:30px;margin-top:10px">
+                <h2>پرداخت با موفقیت انجام شد</h2>
+                <p>کد پیگیری: @ViewBag.Code</p>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-danger col-md-11" style="margin-right:30px;margin-top:10px">
+                <h2>عملیات پرداخت با شکست مواجه شد</h2>
+            </div>
+        }
+
+    </div>
+</section>

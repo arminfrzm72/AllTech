@@ -1,0 +1,17 @@
+﻿@inject IUserService _userService
+
+@{
+    var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    var user = _userService.GetSideBarInformation(userId);
+}
+
+<section class="category-section border-radius">
+    <header><i class="fa fa-user"></i> <h3> خوش آمدید </h3></header>
+    <br />
+    <center>
+        <img src="~/UserAvatars/@user.ImageName" class="thumbnail" style="max-height:150px;border-radius:50%" />
+        <p>
+            @user.UserName
+        </p>
+    </center>  
+</section> 

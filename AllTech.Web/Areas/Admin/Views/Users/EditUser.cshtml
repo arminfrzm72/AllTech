@@ -1,0 +1,114 @@
+﻿@model EditUserViewModel
+@inject IPermissionService _permissionService
+@{
+    ViewData["Title"] = "ویرایش کاربران";
+    List<Roles> roleList = _permissionService.GetRoles();
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">ویرایش کاربران</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+    <form asp-action="EditUser" method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="UserId" />
+        <input type="hidden" asp-for="AvatarName" />
+        <div class="col-md-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    اطلاعات کاربر
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>نام کاربری</label>
+                        <br />
+                        <label class="text-success">@Model.UserName</label>
+                    </div>
+                    <div class="form-group">
+                        <label>نام</label>
+                        <input type="text" asp-for="FirstName" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>نام خانوادگی</label>
+                        <input type="text" asp-for="LastName" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>ایمیل</label>
+                        <input type="email" asp-for="Email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>کلمه عبور</label>
+                        <input type="text" asp-for="Password" class="form-control">
+                        <p class="help-block">در صورت وارد کردن کلمه عبور، کلمه عبور کاربر تغییر خواهد کرد</p>
+                    </div>
+                    <div asp-validation-summary="All"></div>
+                    <input type="submit" value="ویرایش اطلاعات" class="btn btn-warning" />
+                </div>
+                <!-- /.panel-body -->
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    آواتار
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <img id="imgAvatar" class="thumbnail" src="~/UserAvatars/@Model.AvatarName" />
+                    <div class="form-group">
+                        <br />
+                        <label>انتخاب آواتار</label>
+                        <input type="file" asp-for="UserAvatar" class="form-control" />
+
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    نقش‌های کاربر
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="form-group">
+                        @foreach (var role in roleList)
+                        {
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="SelectedRoles" value="@role" @((Model.UserRoles.Any(r => r == role) ? "checked" : ""))>@_permissionService.GetRoleName(role)
+                                </label>
+                            </div>
+                        }
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts
+{
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgAvatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#UserAvatar").change(function () {
+            readURL(this);
+        });
+    </script>
+}

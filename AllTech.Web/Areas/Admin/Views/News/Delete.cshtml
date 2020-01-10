@@ -1,0 +1,51 @@
+﻿@model AllTech.DomainClasses.News.News
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>حذف</h2>
+
+<h3>آیا از حذف این خبر با عنوان @Model.NewsTitle مطمئن هستید؟</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageName)
+        </dt>
+        <dd>
+            <img src="~/NewsImages/@Model.ImageName" alt="@Model.NewsTitle pic" class="thumbnail" style="max-width:120px;max-height:120px" />
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsTitle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NewsTitle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsGroup)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NewsGroup.GroupTitle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Visit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Visit)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+        <dd>
+            @Model.CreateDate.ToShamsi()
+        </dd>
+
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="NewsID" />
+        <input type="submit" value="حذف" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-default">بازگشت به لیست خبرها</a>
+    </form>
+</div>

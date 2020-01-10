@@ -1,0 +1,60 @@
+﻿@model EditProfileViewModel
+@inject IUserService _userService
+
+@{
+    var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    var user = _userService.GetSideBarInformation(userId);
+}
+@{
+    ViewData["Title"] = "ویرایش پروفایل";
+}
+
+<section class="last-news-section border-radius ">
+    <header><i class="fa fa-edit fa-2x"></i>  <h3>ویرایش پروفایل </h3> </header>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="EditProfile" method="post" enctype="multipart/form-data" style="margin-right:30px;">
+                <input type="hidden" asp-for="AvatarName" />
+                <div class="form-group">
+                    <label asp-for="FirstName" class="control-label"></label>
+                    <input asp-for="FirstName" type="text" class="form-control" placeholder="نام" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastName" class="control-label"></label>
+                    <input asp-for="LastName" type="text" class="form-control" placeholder="نام خانوادگی" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label"></label>
+                    <input asp-for="UserName" type="text" class="form-control" placeholder="نام کاربری" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" type="text" class="form-control" placeholder="ایمیل" />
+                </div>
+                <div class="form-group">
+                    <p class="help-block"> آواتار </p>
+                    <input type="file" asp-for="UserAvatar" accept="images/*" />
+                    <p>لطفا عکس خود را جهت ویرایش در پروفایل انتخاب کنید</p>
+                    <br />
+                    <p>آواتار فعلی شما:</p>
+                    <img src="~/UserAvatars/@user.ImageName" class="thumbnail" style="max-width:150px" />
+                </div>
+
+                <div>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="ویرایش" class="btn btn-warning" />
+                </div>
+                <br />
+                @if (ViewBag.IsSuccess != null)
+                {
+                    <div class="alert alert-success">
+                        اطلاعات شما با موفقیت ویرایش شد
+                    </div>
+                }
+            </form>
+        </div>
+    </div>
+</section>
