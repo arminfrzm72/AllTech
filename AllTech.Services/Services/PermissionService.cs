@@ -58,10 +58,31 @@ namespace AllTech.Services.Services
         {
             //Delete All User Roles
             _db.UserRoles.Where(r => r.UserId == userId).ToList().ForEach(r => _db.UserRoles.Remove(r));
-            AddRolesToUser( rolesId, userId);
+            AddRolesToUser(rolesId, userId);
         }
 
-       
+        public bool CheckPermission(int roleId, string userName)
+        {
+            int userId = _db.Users.Single(u => u.UserName == userName).UserID;
+            List<int> UserRoles = _db.UserRoles.Where(u => u.UserId == userId).Select(r => r.RoleId).ToList();
+
+            if (!UserRoles.Contains(roleId))
+            {
+                return false;
+            }
+
+            if (!UserRoles.Any())
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+            
+        }
+
+
         #endregion
 
     }

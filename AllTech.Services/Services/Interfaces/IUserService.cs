@@ -24,7 +24,7 @@ namespace AllTech.Services.Services.Interfaces
         User GetUserByUserIdInt(int userId);
         User GetUserByEmailForExternalLogin(string email);
         int GetUserIdIntValue(string userId);
-        
+        int GetUserIdByUserName(string userName);
         #endregion
 
         #region UserPanel

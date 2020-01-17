@@ -12,11 +12,12 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using AllTech.Services.Repositories;
 using Microsoft.AspNetCore.Authorization;
+using AllTech.Services.Attributes;
 
 namespace AllTech.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [PermissionChecker(1)]
     public class NewsController : Controller
     {
         private readonly INewsRepository _newsRepository;

@@ -2,7 +2,7 @@
 @inject IPermissionService _permissionService
 @{
     ViewData["Title"] = "ویرایش کاربران";
-    List<Roles> roleList = _permissionService.GetRoles();
+    List<Roles> roleList = ViewBag.Roles;
 }
 
 <div class="row">

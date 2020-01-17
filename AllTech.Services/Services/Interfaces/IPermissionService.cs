@@ -11,5 +11,6 @@ namespace AllTech.Services.Services.Interfaces
         string GetRoleName(Roles roleId);
         void AddRolesToUser(List<Roles> roleIds, int userId);
         void EditUserRoles(int userId, List<Roles> rolesId);
+        bool CheckPermission(int roleId, string userName);
     }
 }

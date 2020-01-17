@@ -103,6 +103,11 @@ namespace AllTech.Services.Services
         {
             return _db.Users.Single(u => u.UserID.ToString() == userId).UserID;
         }
+        public int GetUserIdByUserName(string userName)
+        {
+            return _db.Users.Single(u => u.UserName == userName).UserID;
+        }
+
         #endregion
 
         #region UserPanel
@@ -335,7 +340,7 @@ namespace AllTech.Services.Services
             User user = GetUserByUserIdInt(editUser.UserId);
             user.FirstName = editUser.FirstName;
             user.LastName = editUser.LastName;
-            user.Email = editUser.Email;
+            user.Email = editUser.Email;          
             if (!string.IsNullOrEmpty(editUser.Password))
             {
                 user.Password = PasswordHelper.EncodePasswordMd5(editUser.Password);
@@ -353,6 +358,8 @@ namespace AllTech.Services.Services
         }
 
         
+
+
 
         #endregion
 
